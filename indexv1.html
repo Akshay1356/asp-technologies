@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP Technologies - Premium PCB Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --accent: #ff006e;
+            --dark-0: #000000;
+            --dark-1: #0a0e27;
+            --dark-2: #1a1f3a;
+            --dark-3: #2d3a5e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0afd9;
+            --text-tertiary: #6b7590;
+            --border-color: rgba(0, 255, 136, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-0);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        /* === PREMIUM BACKGROUND SYSTEM === */
+        .bg-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-base {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 0%, rgba(255, 0, 110, 0.05) 0%, transparent 50%);
+        }
+
+        .grid-system {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.5;
+        }
+
+        .animated-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.06;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 800px;
+            height: 800px;
+            background: var(--secondary);
+            bottom: -300px;
+            left: -300px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            animation: float 22s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -50px) scale(1.05); }
+            50% { transform: translate(-20px, 50px) scale(1); }
+            75% { transform: translate(50px, 20px) scale(0.95); }
+        }
+
+        /* === SHOOTING STARS SYSTEM === */
+        .stars-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(180deg, rgba(0, 255, 136, 0.8) 0%, rgba(0, 255, 136, 0.3) 30%, transparent 100%);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 212, 255, 0.3);
+            animation: shootingStar 3s ease-in infinite;
+            opacity: 0;
+        }
+
+        .shooting-star.variant-1 {
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.8) 0%, rgba(0, 212, 255, 0.3) 30%, transparent 100%);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .shooting-star.variant-2 {
+            background: linear-gradient(180deg, rgba(255, 0, 110, 0.8) 0%, rgba(255, 0, 110, 0.3) 30%, transparent 100%);
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.6), 0 0 40px rgba(0, 255, 136, 0.3);
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000px) translateX(1000px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .shooting-star:nth-child(1) {
+            left: 10%;
+            top: 10%;
+            animation-delay: 0s;
+            animation-duration: 2.5s;
+        }
+
+        .shooting-star:nth-child(2) {
+            left: 20%;
+            top: 30%;
+            animation-delay: 1s;
+            animation-duration: 3s;
+        }
+
+        .shooting-star:nth-child(3) {
+            left: 40%;
+            top: 5%;
+            animation-delay: 2s;
+            animation-duration: 2.8s;
+        }
+
+        .shooting-star:nth-child(4) {
+            left: 60%;
+            top: 20%;
+            animation-delay: 0.5s;
+            animation-duration: 3.2s;
+        }
+
+        .shooting-star:nth-child(5) {
+            left: 80%;
+            top: 40%;
+            animation-delay: 1.5s;
+            animation-duration: 2.7s;
+        }
+
+        .shooting-star:nth-child(6) {
+            left: 15%;
+            top: 60%;
+            animation-delay: 2.5s;
+            animation-duration: 3.1s;
+        }
+
+        .shooting-star:nth-child(7) {
+            left: 70%;
+            top: 15%;
+            animation-delay: 0.8s;
+            animation-duration: 2.9s;
+        }
+
+        .shooting-star:nth-child(8) {
+            left: 35%;
+            top: 50%;
+            animation-delay: 1.8s;
+            animation-duration: 2.6s;
+        }
+
+        .shooting-star:nth-child(9) {
+            left: 85%;
+            top: 70%;
+            animation-delay: 0.3s;
+            animation-duration: 3.3s;
+        }
+
+        .shooting-star:nth-child(10) {
+            left: 25%;
+            top: 80%;
+            animation-delay: 2.2s;
+            animation-duration: 2.8s;
+        }
+
+        /* === PREMIUM LOADING SCREEN === */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOutScreen 0.8s ease-in-out 5s forwards;
+        }
+
+        @keyframes fadeOutScreen {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .premium-loader {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-ring {
+            position: absolute;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary);
+            border-right: 2px solid var(--secondary);
+            border-radius: 50%;
+        }
+
+        .loader-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            animation: spin 3s linear infinite;
+        }
+
+        .loader-ring:nth-child(2) {
+            width: 75%;
+            height: 75%;
+            border-top-color: var(--secondary);
+            border-right-color: var(--accent);
+            animation: spin 2s linear infinite reverse;
+        }
+
+        .loader-ring:nth-child(3) {
+            width: 50%;
+            height: 50%;
+            border-top-color: var(--accent);
+            border-right-color: var(--primary);
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 2;
+        }
+
+        .boot-line {
+            opacity: 0;
+            animation: bootType 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .boot-line:nth-child(1) { animation-delay: 0.8s; }
+        .boot-line:nth-child(2) { animation-delay: 1.6s; }
+        .boot-line:nth-child(3) { animation-delay: 2.4s; }
+        .boot-line:nth-child(4) { animation-delay: 3.2s; }
+
+        @keyframes bootType {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--primary); }
+            50% { opacity: 0.4; box-shadow: 0 0 20px var(--primary); }
+        }
+
+        /* === MAIN CONTENT === */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === PREMIUM HEADER === */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 60px;
+            background: rgba(10, 14, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 20px 60px;
+            background: rgba(10, 14, 39, 0.9);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            filter: drop-shadow(0 0 20px var(--primary));
+        }
+
+        nav {
+            display: flex;
+            gap: 50px;
+        }
+
+        nav a {
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        /* === PREMIUM HERO SECTION === */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            animation: heroFadeIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.8s ease forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin: 20px 0;
+            letter-spacing: -2px;
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 30px auto 40px;
+            line-height: 1.8;
+            font-weight: 300;
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            animation-delay: 0.9s;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark-0);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            z-index: -1;
+            transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark-0);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* === SCROLL SECTIONS === */
+        .section {
+            min-height: 100vh;
+            padding: 120px 60px;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .section:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+
+        .section:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .section-content {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: sectionFadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .section.visible .section-content {
+            animation: sectionFadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes sectionFadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section:nth-child(even) .section-content {
+            transform: translateX(50px);
+        }
+
+        .section h2 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .section h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .section-visual {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: sectionVisualFadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(even) .section-visual {
+            transform: translateX(-50px);
+        }
+
+        .section.visible .section-visual {
+            animation: sectionVisualFadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes sectionVisualFadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .visual-container {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 255, 136, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-container::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            border-radius: 11px;
+            pointer-events: none;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 255, 136, 0.08));
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 8px;
+            margin: 20px 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(0, 255, 136, 0.12));
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* === SERVICES SECTION === */
+        .services {
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .services-header h2 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .services-header h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 255, 136, 0.08));
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 100% 0%, rgba(0, 255, 136, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 212, 255, 0.3));
+            border-color: rgba(0, 255, 136, 0.5);
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .service-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+
+        .service-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-arrow {
+            transform: translateX(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 255, 136, 0.15);
+        }
+
+        /* === CONTACT SECTION === */
+        .contact {
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info {
+            opacity: 0;
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-info h2 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .contact-info h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-item {
+            margin-bottom: 40px;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .contact-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            opacity: 0;
+            animation: slideInRight 1s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-form h2 {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .contact-form h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 255, 136, 0.05));
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 14px 16px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            outline: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: rgba(0, 255, 136, 0.5);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 255, 136, 0.08));
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* === SUCCESS MESSAGE === */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeInOverlay 0.4s ease forwards;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0);
+            }
+            to {
+                opacity: 1;
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        .success-overlay.show {
+            display: flex;
+        }
+
+        .success-content {
+            text-align: center;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            animation: successPulse 0.6s ease;
+        }
+
+        @keyframes successPulse {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .success-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .success-message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 60px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .section {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding: 80px 40px;
+            }
+
+            .section:nth-child(even) {
+                direction: ltr;
+            }
+
+            .section:nth-child(even) > * {
+                direction: ltr;
+            }
+
+            .section h2 {
+                font-size: 40px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 100px 30px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .section h2 {
+                font-size: 32px;
+            }
+
+            .services {
+                padding: 80px 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                padding: 80px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND SYSTEM -->
+    <div class="bg-system">
+        <div class="bg-base"></div>
+        <div class="grid-system"></div>
+        <div class="animated-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
+        <!-- SHOOTING STARS LAYER -->
+        <div class="stars-container">
+            <div class="shooting-star"></div>
+            <div class="shooting-star variant-1"></div>
+            <div class="shooting-star variant-2"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star variant-1"></div>
+            <div class="shooting-star variant-2"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star variant-1"></div>
+            <div class="shooting-star variant-2"></div>
+            <div class="shooting-star"></div>
+        </div>
+    </div>
+
+    <!-- PREMIUM LOADING SCREEN -->
+    <div class="loading-container">
+        <div class="loader-content">
+            <div class="premium-loader">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+            </div>
+            <div class="loader-text">
+                <div class="boot-line"><span class="status-indicator"></span>INITIALIZING SYSTEM</div>
+                <div class="boot-line"><span class="status-indicator"></span>LOADING ENVIRONMENT</div>
+                <div class="boot-line"><span class="status-indicator"></span>VERIFYING SIGNALS</div>
+                <div class="boot-line"><span class="status-indicator"></span>SYSTEM READY</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="wrapper">
+        <!-- PREMIUM HEADER -->
+        <header>
+            <div class="logo">⚡ ASP TECHNOLOGIES</div>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#concept">Design</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero" id="hero">
+            <svg class="hero-canvas" viewBox="0 0 1000 600">
+                <!-- Advanced PCB visualization -->
+                <defs>
+                    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#00ff88;stop-opacity:0" />
+                    </radialGradient>
+                </defs>
+
+                <!-- Main circuit paths -->
+                <g stroke-width="2" fill="none" stroke-linecap="round">
+                    <path d="M 150 300 Q 300 150 450 300 T 750 300" stroke="#00ff88" opacity="0.6" filter="url(#glow)">
+                        <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="8s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M 200 350 Q 350 500 500 350 T 800 350" stroke="#00d4ff" opacity="0.6" filter="url(#glow)">
+                        <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="8s" repeatCount="indefinite" begin="1s"/>
+                    </path>
+                </g>
+
+                <!-- Component nodes -->
+                <g fill="none" stroke="#00ff88" stroke-width="1.5">
+                    <circle cx="150" cy="300" r="30" opacity="0.3">
+                        <animate attributeName="r" values="30;35;30" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="450" cy="300" r="30" opacity="0.3">
+                        <animate attributeName="r" values="30;35;30" dur="3s" repeatCount="indefinite" begin="1s"/>
+                    </circle>
+                    <circle cx="750" cy="300" r="30" opacity="0.3">
+                        <animate attributeName="r" values="30;35;30" dur="3s" repeatCount="indefinite" begin="2s"/>
+                    </circle>
+                </g>
+
+                <!-- Data packets moving -->
+                <g fill="#00ff88" opacity="0.8">
+                    <circle cx="150" cy="300" r="6">
+                        <animate attributeName="cx" values="150;450;750" dur="8s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="1;0.6;1" dur="8s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+            </svg>
+
+            <div class="hero-content">
+                <div class="hero-label">Premium Hardware Engineering</div>
+                <h1>Transforming Ideas Into <span>Intelligent Hardware</span></h1>
+                <p>Advanced PCB design, signal integrity analysis, and manufacturing excellence. From concept to production, we engineer the future.</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="document.querySelector('#concept').scrollIntoView({behavior:'smooth'})">
+                        Explore Our Work
+                    </button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCEPT PHASE SECTION -->
+        <section class="section" id="concept">
+            <div class="section-content">
+                <h2>Concept <span>Phase</span></h2>
+                <p>Every remarkable product begins with a clear vision. Our engineering team transforms your requirements into detailed architectural blueprints, analyzing signal paths, power domains, and system constraints.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <div class="feature-title">Schematic Design</div>
+                    <div class="feature-desc">Complete circuit topology analysis with multi-domain architecture planning</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-title">Block Diagram Architecture</div>
+                    <div class="feature-desc">System-level design with detailed component interaction and signal flow</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <div class="feature-title">Power Domain Planning</div>
+                    <div class="feature-desc">Multi-rail power distribution and regulation strategy optimization</div>
+                </div>
+            </div>
+
+            <div class="section-visual">
+                <div class="visual-container">
+                    <svg width="100%" height="100%" viewBox="0 0 400 400" style="max-width: 100%; max-height: 100%;">
+                        <!-- Schematic blocks -->
+                        <g stroke="#00ff88" stroke-width="2" fill="none" font-family="Inter, sans-serif">
+                            <!-- CPU Block -->
+                            <rect x="40" y="80" width="80" height="60" rx="4"/>
+                            <text x="80" y="115" text-anchor="middle" fill="#00ff88" font-size="11" font-weight="600">CPU</text>
+                            
+                            <!-- MEMORY Block -->
+                            <rect x="200" y="80" width="80" height="60" rx="4"/>
+                            <text x="240" y="115" text-anchor="middle" fill="#00ff88" font-size="11" font-weight="600">MEMORY</text>
+                            
+                            <!-- POWER Block -->
+                            <rect x="120" y="220" width="80" height="60" rx="4" stroke="#00d4ff"/>
+                            <text x="160" y="255" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="600">POWER</text>
+
+                            <!-- Connection traces with animation -->
+                            <path d="M 120 110 L 200 110" stroke="#00ff88" stroke-width="2" stroke-dasharray="10,10">
+                                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M 80 140 L 160 220" stroke="#00d4ff" stroke-width="2" stroke-dasharray="10,10">
+                                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M 240 140 L 200 220" stroke="#00d4ff" stroke-width="2" stroke-dasharray="10,10">
+                                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- PCB DESIGN SECTION -->
+        <section class="section">
+            <div class="section-visual">
+                <div class="visual-container">
+                    <svg width="100%" height="100%" viewBox="0 0 400 400" style="max-width: 100%; max-height: 100%;">
+                        <defs>
+                            <linearGradient id="pcb" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1a4d2e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0a2d18;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- PCB Base -->
+                        <rect x="20" y="20" width="360" height="360" fill="url(#pcb)" stroke="#00ff88" stroke-width="2" rx="8"/>
+                        
+                        <!-- Copper traces with animated signal flow -->
+                        <path d="M 80 100 L 180 100 L 180 200 L 320 200" fill="none" stroke="#00ff88" stroke-width="3" opacity="0.8" stroke-dasharray="20,10">
+                            <animate attributeName="stroke-dashoffset" from="0" to="-30" dur="1.5s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Component placement -->
+                        <g stroke="#00d4ff" stroke-width="1.5" fill="none">
+                            <rect x="60" y="80" width="40" height="40" rx="3"/>
+                            <rect x="220" y="80" width="40" height="40" rx="3"/>
+                            <rect x="300" y="180" width="40" height="40" rx="3"/>
+                        </g>
+
+                        <!-- Via and connection points -->
+                        <g fill="#ff006e" opacity="0.8">
+                            <circle cx="180" cy="100" r="3"/>
+                            <circle cx="180" cy="200" r="3"/>
+                            <circle cx="320" cy="200" r="3"/>
+                            <circle cx="100" cy="320" r="3"/>
+                            <circle cx="300" cy="320" r="3"/>
+                        </g>
+
+                        <!-- Layer indicators -->
+                        <text x="200" y="350" text-anchor="middle" fill="#00ff88" font-size="10" opacity="0.6">8 LAYER STACKUP</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <h2><span>PCB Design</span> Excellence</h2>
+                <p>Every trace is precisely routed with signal integrity as priority. Multi-layer designs optimize for performance, thermal management, and manufacturability. Our advanced routing algorithms ensure optimal trace lengths and controlled impedance.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">Advanced Layout</div>
+                    <div class="feature-desc">Sophisticated multi-layer routing with automated trace length matching</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Impedance Control</div>
+                    <div class="feature-desc">Precision trace design for controlled impedance and signal integrity</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌡️</div>
+                    <div class="feature-title">Thermal Management</div>
+                    <div class="feature-desc">Optimal component placement and thermal dissipation design</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNAL INTEGRITY SECTION -->
+        <section class="section" id="si">
+            <div class="section-content">
+                <h2>Signal <span>Integrity Analysis</span></h2>
+                <p>Every signal must maintain integrity across the board. Advanced simulation tools analyze crosstalk, reflections, timing violations, and eye diagram quality. We ensure your design meets the most stringent performance requirements.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Eye Diagram Verification</div>
+                    <div class="feature-desc">Comprehensive high-speed signal quality analysis and margin verification</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Crosstalk Analysis</div>
+                    <div class="feature-desc">Multi-aggressor crosstalk simulation and mitigation strategies</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-title">Timing Closure</div>
+                    <div class="feature-desc">Setup, hold, and skew analysis with detailed timing optimization</div>
+                </div>
+            </div>
+
+            <div class="section-visual">
+                <div class="visual-container">
+                    <svg width="100%" height="100%" viewBox="0 0 400 400" style="max-width: 100%; max-height: 100%;">
+                        <!-- Eye Diagram -->
+                        <g transform="translate(50, 50)">
+                            <rect width="300" height="300" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+                            
+                            <!-- Oscilloscope trace -->
+                            <path d="M 0,150 L 20,120 L 40,140 L 60,130 L 80,160 L 100,140 L 120,150 L 140,130 L 160,155 L 180,140 L 200,150 L 220,120 L 240,145 L 260,135 L 280,155 L 300,145" 
+                                  fill="none" stroke="#00d4ff" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+                            
+                            <!-- Eye pattern overlays -->
+                            <ellipse cx="150" cy="150" rx="50" ry="40" fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.4"/>
+                            
+                            <!-- Grid lines -->
+                            <line x1="0" y1="50" x2="300" y2="50" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+                            <line x1="0" y1="150" x2="300" y2="150" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+                            <line x1="0" y1="250" x2="300" y2="250" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+                            
+                            <!-- Data points -->
+                            <circle cx="40" cy="120" r="2" fill="#ff006e" opacity="0.8"/>
+                            <circle cx="100" cy="140" r="2" fill="#ff006e" opacity="0.8"/>
+                            <circle cx="160" cy="155" r="2" fill="#ff006e" opacity="0.8"/>
+                            <circle cx="220" cy="120" r="2" fill="#ff006e" opacity="0.8"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- POWER INTEGRITY SECTION -->
+        <section class="section">
+            <div class="section-visual">
+                <div class="visual-container">
+                    <svg width="100%" height="100%" viewBox="0 0 400 400" style="max-width: 100%; max-height: 100%;">
+                        <defs>
+                            <radialGradient id="heatmap" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#ff006e;stop-opacity:0.4" />
+                                <stop offset="100%" style="stop-color:#ff006e;stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Power plane representation -->
+                        <rect x="20" y="20" width="360" height="360" fill="none" stroke="#ff006e" stroke-width="2" rx="8" opacity="0.5"/>
+                        
+                        <!-- Voltage distribution heatmap -->
+                        <circle cx="100" cy="120" r="80" fill="url(#heatmap)" opacity="0.6"/>
+                        <circle cx="300" cy="120" r="80" fill="url(#heatmap)" opacity="0.6"/>
+                        <circle cx="200" cy="300" r="80" fill="url(#heatmap)" opacity="0.6"/>
+
+                        <!-- Power delivery points -->
+                        <g fill="#ff006e" opacity="1">
+                            <circle cx="80" cy="80" r="6" filter="drop-shadow(0 0 8px #ff006e)"/>
+                            <circle cx="320" cy="80" r="6" filter="drop-shadow(0 0 8px #ff006e)"/>
+                            <circle cx="200" cy="340" r="6" filter="drop-shadow(0 0 8px #ff006e)"/>
+                            <circle cx="200" cy="40" r="6" filter="drop-shadow(0 0 8px #ff006e)"/>
+                        </g>
+
+                        <!-- Current flow visualization -->
+                        <path d="M 80 80 Q 200 150 320 80" fill="none" stroke="#ff006e" stroke-width="2.5" opacity="0.7" stroke-dasharray="10,10">
+                            <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <h2>Power <span>Integrity</span> Design</h2>
+                <p>Robust power distribution is fundamental to system stability. We design advanced PDNs with multiple power planes, optimized via stitching, and decoupling strategies. Every component receives clean, stable power exactly when needed.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">PDN Optimization</div>
+                    <div class="feature-desc">Multi-domain power network design with impedance profiling</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">Voltage Drop Analysis</div>
+                    <div class="feature-desc">Comprehensive IR drop analysis and mitigation strategies</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <div class="feature-title">Decoupling Strategy</div>
+                    <div class="feature-desc">Optimal capacitor selection and placement for power stability</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANUFACTURING SECTION -->
+        <section class="section" id="manufacturing">
+            <div class="section-content">
+                <h2><span>Manufacturing</span> Excellence</h2>
+                <p>From digital design to physical production. We manage the entire manufacturing process with rigorous quality control. DFM optimization, Gerber generation, and production verification ensure your boards meet exacting standards.</p>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <div class="feature-title">DFM Analysis</div>
+                    <div class="feature-desc">Design for manufacturability review and optimization</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-title">Gerber Generation</div>
+                    <div class="feature-desc">Production-ready manufacturing files with quality verification</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-title">Quality Assurance</div>
+                    <div class="feature-desc">Full production support and testing throughout manufacturing</div>
+                </div>
+            </div>
+
+            <div class="section-visual">
+                <div class="visual-container">
+                    <svg width="100%" height="100%" viewBox="0 0 400 400" style="max-width: 100%; max-height: 100%;">
+                        <!-- 3D PCB Representation -->
+                        <g>
+                            <!-- Front face -->
+                            <rect x="50" y="100" width="300" height="200" fill="#1a4d2e" stroke="#00ff88" stroke-width="2.5" rx="6"/>
+                            
+                            <!-- 3D depth -->
+                            <polygon points="350,100 370,85 370,285 350,300" fill="#0a2d18" stroke="#00ff88" stroke-width="1.5"/>
+                            <polygon points="50,300 350,300 370,285 70,285" fill="#0a2d18" stroke="#00ff88" stroke-width="1.5"/>
+                            
+                            <!-- Components on board -->
+                            <rect x="80" y="140" width="45" height="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                            <rect x="195" y="140" width="45" height="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                            <rect x="310" y="140" width="35" height="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                            
+                            <!-- Connectors -->
+                            <circle cx="50" cy="150" r="4" fill="#ff006e"/>
+                            <circle cx="50" cy="200" r="4" fill="#ff006e"/>
+                            <circle cx="50" cy="250" r="4" fill="#ff006e"/>
+                            
+                            <!-- Rotation indicator -->
+                            <path d="M 200 340 A 35 35 0 0 1 240 340" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.5" stroke-dasharray="5,5"/>
+                            <text x="200" y="365" text-anchor="middle" fill="#00ff88" font-size="11" opacity="0.7">ROTATING</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="services" id="services">
+            <div class="services-header">
+                <h2>Our <span>Services</span></h2>
+                <p>Comprehensive engineering solutions from concept through production</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">📐</div>
+                    <h3 class="service-title">PCB Design</h3>
+                    <p class="service-desc">Complete PCB design from schematic to layout. We consider signal and power integrity, thermal management, and manufacturability constraints.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">High-Speed Layout</h3>
+                    <p class="service-desc">Expert routing for high-speed signals with controlled impedance, differential pair management, and length matching precision.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Signal Integrity</h3>
+                    <p class="service-desc">Comprehensive SI analysis including timing closure, crosstalk evaluation, and eye diagram verification for optimal signal quality.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">04</div>
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Power Integrity</h3>
+                    <p class="service-desc">PDN optimization, voltage drop analysis, and power distribution network design for stable, efficient power delivery.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">05</div>
+                    <div class="service-icon">💾</div>
+                    <h3 class="service-title">DDR Validation</h3>
+                    <p class="service-desc">DDR3/DDR4/DDR5 validation, timing closure, memory interface optimization, and comprehensive testing support.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">06</div>
+                    <div class="service-icon">🛡️</div>
+                    <h3 class="service-title">EMI/EMC</h3>
+                    <p class="service-desc">EMI analysis, shielding design, and compliance optimization for international electromagnetic compatibility standards.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">07</div>
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Embedded Hardware</h3>
+                    <p class="service-desc">Custom hardware design for embedded systems, IoT applications, and specialized engineering requirements.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">08</div>
+                    <div class="service-icon">🏭</div>
+                    <h3 class="service-title">Manufacturing Support</h3>
+                    <p class="service-desc">Complete manufacturing support from DFM review to production verification, quality assurance, and testing.</p>
+                    <div class="service-arrow">→</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact" id="contact">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Let's <span>Connect</span></h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-text">
+                            ASP Technologies<br>
+                            No. 3, Thillai Nagar First Street<br>
+                            Korattur, Chennai - 600080<br>
+                            India
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-text">
+                            mp@asp-technologies.in
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-text">
+                            +91 9791005611
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send Your <span>Project</span></h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label>Your Name *</label>
+                            <input type="text" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" required placeholder="john@company.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Type *</label>
+                            <input type="text" required placeholder="e.g., PCB Design, High-Speed Layout">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea required placeholder="Tell us about your project..."></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center;">
+                            Send Transmission ✓
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUCCESS OVERLAY -->
+        <div class="success-overlay" id="success-overlay">
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h3 class="success-title">Transmission <span>Successful</span></h3>
+                <p class="success-message">Your message has been received</p>
+                <p class="success-message">Our engineering team will contact you shortly</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 ASP Technologies. All signals reserved. | Engineering Excellence Through Precision | Transforming Ideas Into Intelligent Hardware</p>
+        </footer>
+    </div>
+
+    <script>
+        // === HEADER SCROLL EFFECT ===
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // === SECTION VISIBILITY OBSERVER ===
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // === FORM SUBMISSION ===
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.add('show');
+            
+            e.target.reset();
+            
+            setTimeout(() => {
+                overlay.classList.remove('show');
+            }, 4000);
+        });
+
+        // === SMOOTH SCROLL ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
